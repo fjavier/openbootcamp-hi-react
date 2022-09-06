@@ -6,14 +6,16 @@ import { LEVELS } from '../models/levels';
 import "../styles/task.scss"
 
 function TaskList(props) {
-    const task1 = new TaskModel("Primer tarea","primer tarea", false, LEVELS.NORMAL);
+    const task1 = new TaskModel("Primer tarea","primer tarea", true, LEVELS.BLOCKING);
+    const task2 = new TaskModel("Tarea 2","Segunda tarea", true, LEVELS.NORMAL);
+    const task3 = new TaskModel("Tarea 3","Tercer Tarea", true, LEVELS.URGENT);
 
-    const [task, settask] = useState([task1]);
+    const [tareas, setTareas] = useState([task1, task2, task3]);
     const [loading, setloading] = useState(true);
     
     useEffect(() => {
         setloading(false);        
-    }, [task]);
+    }, [tareas]);
 
   return (
     <div>
@@ -34,7 +36,13 @@ function TaskList(props) {
                   </tr>
                 </thead>  
                 <tbody>
-                  <Task task={task1}></Task>          
+                  {
+                    tareas.map(
+                      (tarea, index) => {
+                          return <Task task={tarea} key={index}></Task>;
+                      }
+                    )
+                  }
                 </tbody>     
               </table>
             </div>            
