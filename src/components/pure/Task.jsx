@@ -14,12 +14,21 @@ function Task({task}) {
     }, [task]);
 
   return (
-    <div>
-        <h1>{task.name}</h1>
-        <h3>{task.description}</h3>
-        <h3>{task.isDone ? "Completado" : "Pendiente"}</h3>
-        <h3>{task.level}</h3>
-   </div>
+        <tr>
+            <td>
+                <span className='ms-2'>{task.name}</span>    
+            </td>
+            <td className='align-middle'>
+                <span>{task.description}</span> 
+            </td>
+            <td className='align-middle'>
+                <span>{task.isDone ? "Completado" : "Pendiente"}</span>                
+            </td>
+            <td className='align-middle'>
+                
+                <span>{task.level}</span>    
+            </td>
+        </tr>   
   )
 }
 
